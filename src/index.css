@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (min-width: 1400px) {
-  .container {
-    max-width: 1400px;
-  }
+.dark body {
+  background-color: #030712; /* bg-gray-950 */
 }
