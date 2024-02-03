@@ -1,6 +1,6 @@
 import { CiSun, CiCloudMoon } from "react-icons/ci";
 import { PiComputerTower } from "react-icons/pi";
-import { useTheme, Theme } from "./theme-provider";
+import { useTheme, Theme } from "@/components/ui/theme-provider";
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();

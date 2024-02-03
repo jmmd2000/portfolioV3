@@ -23,34 +23,38 @@ import {
 import profile from "./assets/profile.jpg";
 import ericsson from "./assets/ericsson.png";
 import fusio from "./assets/fusio.png";
-import { ThemeProvider } from "../@/components/ui/theme-provider";
-import { ModeToggle } from "../@/components/ui/mode-toggle";
-import { useToast } from "../@/components/ui/use-toast";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { ModeToggle } from "@/components/ui/mode-toggle";
+import { toast } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 function App() {
-  const { toast } = useToast();
-  function copyEmail() {
+  const copyEmail = () => {
     try {
       navigator.clipboard.writeText("jamesmddoyle@gmail.com");
-      toast({
-        title: "Success",
-        description: "Successfully copied email to the clipboard.",
-      });
+      toast("Email copied to clipboard.");
     } catch (err) {
-      toast({
-        title: "Error",
-        description:
-          "There was an error when copying the email to the clipboard, please try again.",
-      });
+      toast("Error copying email to clipboard.");
     }
-  }
+  };
   return (
     <ThemeProvider
       defaultTheme="dark"
       storageKey="vite-ui-theme"
     >
+      <Toaster
+        toastOptions={{
+          unstyled: true,
+          classNames: {
+            toast:
+              "border border-gray-300 text-sm p-4 dark:border-gray-700 bg-white dark:bg-gray-950 w-auto text-gray-500 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 hover:cursor-pointer",
+          },
+        }}
+      />
       <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16 font-mono dark:bg-gray-950">
-        <ModeToggle />
+        <div className="flex items-center justify-center lg:justify-start">
+          <ModeToggle />
+        </div>
         <section className="mx-auto w-full max-w-2xl flex items-center justify-between print:space-y-6">
           <div className="space-y-3">
             <h1 className="text-2xl font-bold text-gray-950 dark:text-zinc-100 font-sans">
